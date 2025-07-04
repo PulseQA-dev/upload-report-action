@@ -1,0 +1,22 @@
+name: TestOps Report Action
+description: Upload test report to TestOps
+
+inputs:
+  token:
+    description: Project token
+    required: true
+  report-file:
+    description: Path to the report file (JUnit XML)
+    required: true
+  branch:
+    description: Branch of the test run
+  commit-sha:
+    description: Full commit SHA
+
+outputs:
+  run-id:
+    description: Run ID
+
+runs:
+  using: node20
+  main: dist/index.js
