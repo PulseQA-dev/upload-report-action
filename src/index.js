@@ -13,7 +13,9 @@ async function main() {
     apiRootUrl, token, commitSha, branch, reportFilepath,
   )
 
-  core.info(`Test report uploaded to ${apiRootUrl}${runPath}.`)
+  const uiUrl = apiRootUrl.replace('api.', '')
+
+  core.info(`Test report uploaded to ${uiUrl}${runPath}`)
 
   core.setOutput('run-id', runId)
   core.setOutput('run-path', runPath)

@@ -50200,7 +50200,9 @@ async function main() {
     apiRootUrl, token, commitSha, branch, reportFilepath,
   );
 
-  coreExports.info(`Test report uploaded to ${apiRootUrl}${runPath}.`);
+  const uiUrl = apiRootUrl.replace('api.', '');
+
+  coreExports.info(`Test report uploaded to ${uiUrl}${runPath}.`);
 
   coreExports.setOutput('run-id', runId);
   coreExports.setOutput('run-path', runPath);
