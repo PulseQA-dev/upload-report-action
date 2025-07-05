@@ -50202,7 +50202,7 @@ async function main() {
 
   const uiUrl = apiRootUrl.replace('api.', '');
 
-  coreExports.info(`Test report uploaded to ${uiUrl}${runPath}.`);
+  coreExports.info(`Test report uploaded to ${uiUrl}${runPath}`);
 
   coreExports.setOutput('run-id', runId);
   coreExports.setOutput('run-path', runPath);
