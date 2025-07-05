@@ -1,24 +1,23 @@
 import * as core from "@actions/core";
 import * as github from "@actions/github";
+import testops from "./testops";
 
-function main() {
+async function main() {
   const token = core.getInput('token')
-  const reportFile = core.getInput('report-file')
+  const reportFilepath = core.getInput('report-file')
   const branch = core.getInput('branch') || github.context.ref.replace('refs/heads/', '');
   const commitSha = core.getInput('commit-sha') || github.context.sha;
+  const apiRootUrl = core.getInput('api-root-url') || 'https://api.testops.cloudkon.net'
 
-  core.info(JSON.stringify({
-    token,
-    reportFile,
-    branch,
-    commitSha,
-  }))
+  const runId = await testops.uploadTestRunReport(
+    apiRootUrl, token, commitSha, branch, reportFilepath,
+  )
 
-  core.setOutput('run-id', '')
+  core.setOutput('run-id', runId)
 }
 
 try {
-  main()
+  await main()
 } catch (error) {
   core.setFailed(error.message);
 }
