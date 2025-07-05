@@ -16,6 +16,8 @@ inputs:
 outputs:
   run-id:
     description: Run ID
+  run-path:
+    description: Path to the uploaded run
 
 runs:
   using: node20

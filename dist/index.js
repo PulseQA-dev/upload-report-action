@@ -50196,11 +50196,14 @@ async function main() {
   const commitSha = coreExports.getInput('commit-sha') || githubExports.context.sha;
   const apiRootUrl = coreExports.getInput('api-root-url') || 'https://api.testops.cloudkon.net';
 
-  const runId = await testops.uploadTestRunReport(
+  const { runId, runPath } = await testops.uploadTestRunReport(
     apiRootUrl, token, commitSha, branch, reportFilepath,
   );
 
+  coreExports.info(`Test report uploaded to ${apiRootUrl}${runPath}.`);
+
   coreExports.setOutput('run-id', runId);
+  coreExports.setOutput('run-path', runPath);
 }
 
 try {
