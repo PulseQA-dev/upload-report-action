@@ -9,11 +9,14 @@ async function main() {
   const commitSha = core.getInput('commit-sha') || github.context.sha;
   const apiRootUrl = core.getInput('api-root-url') || 'https://api.testops.cloudkon.net'
 
-  const runId = await testops.uploadTestRunReport(
+  const { runId, runPath } = await testops.uploadTestRunReport(
     apiRootUrl, token, commitSha, branch, reportFilepath,
   )
 
+  core.info(`Test report uploaded to ${apiRootUrl}${runPath}.`)
+
   core.setOutput('run-id', runId)
+  core.setOutput('run-path', runPath)
 }
 
 try {
