@@ -2,8 +2,8 @@ import axios from "axios";
 import fs from 'fs';
 
 /**
-  * Uploads a test run report to the TestOps API.
-  * @param {string} apiRootUrl - The base URL of the TestOps API.
+  * Uploads a test run report to the PulseQA API.
+  * @param {string} apiRootUrl - The base URL of the PulseQA API.
   * @param {string} token - The API token for authentication.
   * @param {string} commitSha - The SHA of the commit associated with the test run.
   * @param {string} branch - The branch name associated with the test run.

@@ -25,14 +25,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Run tests
         run: |
           pytest --junitxml=test-results.xml
-      
+
       - name: Upload test results to PulseQA.dev
-        if: always()  # Upload results even if tests fail
-        uses: github.com/PulseQA-pro/pulseqa@main
+        if: always() # Upload results even if tests fail
+        uses: PulseQA-dev/upload-report-action@main
         with:
           token: ${{ secrets.PULSEQA_PROJECT_TOKEN }}
           report-file: test-results.xml
@@ -40,10 +40,10 @@ jobs:
 
 ## Inputs
 
-| Input | Description | Required | Default |
-|-------|-------------|----------|---------|
-| `token` | PulseQA.dev project token | ✅ Yes | - |
-| `report-file` | Path to JUnit XML test report file | ✅ Yes | - |
+| Input         | Description                        | Required | Default |
+| ------------- | ---------------------------------- | -------- | ------- |
+| `token`       | PulseQA.dev project token          | ✅ Yes   | -       |
+| `report-file` | Path to JUnit XML test report file | ✅ Yes   | -       |
 
 ## Examples
 
@@ -57,7 +57,7 @@ jobs:
 
 - name: Upload to PulseQA.dev
   if: always()
-  uses: github.com/PulseQA-pro/pulseqa@main
+  uses: PulseQA-dev/upload-report-action@main
   with:
     token: ${{ secrets.PULSEQA_PROJECT_TOKEN }}
     report-file: pytest-results.xml
@@ -72,7 +72,7 @@ jobs:
 
 - name: Upload to PulseQA.dev
   if: always()
-  uses: github.com/PulseQA-pro/pulseqa@main
+  uses: PulseQA-dev/upload-report-action@main
   with:
     token: ${{ secrets.PULSEQA_PROJECT_TOKEN }}
     report-file: go-test-results.xml
@@ -87,7 +87,7 @@ jobs:
 
 - name: Upload to PulseQA.dev
   if: always()
-  uses: github.com/PulseQA-pro/pulseqa@main
+  uses: PulseQA-dev/upload-report-action@main
   with:
     token: ${{ secrets.PULSEQA_PROJECT_TOKEN }}
     report-file: target/surefire-reports/TEST-*.xml
@@ -128,5 +128,6 @@ This action supports any testing framework that can generate JUnit XML reports, 
 ## Support
 
 For questions or issues:
+
 - Visit [PulseQA.dev](https://pulseqa.dev) for platform support
 - Create an issue in this repository for action-specific problems

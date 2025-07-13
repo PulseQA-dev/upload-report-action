@@ -50153,8 +50153,8 @@ const {
 } = axios;
 
 /**
-  * Uploads a test run report to the TestOps API.
-  * @param {string} apiRootUrl - The base URL of the TestOps API.
+  * Uploads a test run report to the PulseQA API.
+  * @param {string} apiRootUrl - The base URL of the PulseQA API.
   * @param {string} token - The API token for authentication.
   * @param {string} commitSha - The SHA of the commit associated with the test run.
   * @param {string} branch - The branch name associated with the test run.
@@ -50185,7 +50185,7 @@ async function uploadTestRunReport(apiRootUrl, token, commitSha, branch, reportF
   return resp.data;
 }
 
-var testops = {
+var pulseqa = {
   uploadTestRunReport
 };
 
@@ -50194,9 +50194,9 @@ async function main() {
   const reportFilepath = coreExports.getInput('report-file');
   const branch = coreExports.getInput('branch') || githubExports.context.ref.replace('refs/heads/', '');
   const commitSha = coreExports.getInput('commit-sha') || githubExports.context.sha;
-  const apiRootUrl = coreExports.getInput('api-root-url') || 'https://api.testops.cloudkon.net';
+  const apiRootUrl = coreExports.getInput('api-root-url') || 'https://api.pulseqa.dev';
 
-  const { runId, runPath } = await testops.uploadTestRunReport(
+  const { runId, runPath } = await pulseqa.uploadTestRunReport(
     apiRootUrl, token, commitSha, branch, reportFilepath,
   );
 

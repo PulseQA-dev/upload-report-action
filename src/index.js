@@ -1,6 +1,6 @@
 import * as core from "@actions/core";
 import * as github from "@actions/github";
-import testops from "./testops";
+import pulseqa from "./pulseqa";
 
 async function main() {
   const token = core.getInput('token')
@@ -9,7 +9,7 @@ async function main() {
   const commitSha = core.getInput('commit-sha') || github.context.sha;
   const apiRootUrl = core.getInput('api-root-url') || 'https://api.pulseqa.dev'
 
-  const { runId, runPath } = await testops.uploadTestRunReport(
+  const { runId, runPath } = await pulseqa.uploadTestRunReport(
     apiRootUrl, token, commitSha, branch, reportFilepath,
   )
 

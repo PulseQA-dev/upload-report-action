@@ -1,9 +1,9 @@
-import testops from './testops.js'
+import pulseqa from './pulseqa.js'
 
 try {
-  const resp = await testops.uploadTestRunReport(
+  const resp = await pulseqa.uploadTestRunReport(
     'https://api.pulseqa.dev',
-    process.env.TESTOPS_PROJECT_TOKEN,
+    process.env.PULSEQA_PROJECT_TOKEN,
     'testsha',
     'testbranch',
     '../testops/testing/results.xml',
