@@ -1,5 +1,5 @@
-name: TestOps Report Action
-description: Upload test report to TestOps
+name: PulseQA Upload Report
+description: Upload test report to PulseQA
 
 inputs:
   token:

@@ -2,7 +2,7 @@ import testops from './testops.js'
 
 try {
   const resp = await testops.uploadTestRunReport(
-    'https://api.testops.cloudkon.net',
+    'https://api.pulseqa.dev',
     process.env.TESTOPS_PROJECT_TOKEN,
     'testsha',
     'testbranch',

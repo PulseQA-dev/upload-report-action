@@ -7,7 +7,7 @@ async function main() {
   const reportFilepath = core.getInput('report-file')
   const branch = core.getInput('branch') || github.context.ref.replace('refs/heads/', '');
   const commitSha = core.getInput('commit-sha') || github.context.sha;
-  const apiRootUrl = core.getInput('api-root-url') || 'https://api.testops.cloudkon.net'
+  const apiRootUrl = core.getInput('api-root-url') || 'https://api.pulseqa.dev'
 
   const { runId, runPath } = await testops.uploadTestRunReport(
     apiRootUrl, token, commitSha, branch, reportFilepath,
